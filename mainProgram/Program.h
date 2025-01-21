@@ -19,7 +19,7 @@ class Program {
     int solutionFromFile;
     int iterationsWithoutImprove;
     float procentageOfLowerBound;
-    int NUM_ANTS;
+    // int NUM_ANTS;
     double ALPHA;       // Wpływ feromonu
     double BETA;        // Wpływ odległości
     double EVAPORATION; // Współczynnik parowania feromonu
@@ -27,12 +27,15 @@ class Program {
 
     bool isUnDirected;
 
+    bool ifTesting;
+
     std::string nazwaPlikuWejsciowego;
     std::string nazwaPlikuWyjsciowego;
     bool ifFromFile;
 
     std::unordered_map<std::string, std::string> konfiguracja;//wczytywanie z pliku konfiguracyjnego
 
+    void printConfigFile();
 public:
     Program();
     void wczytanieZPlikuKonfiguracyjnego();

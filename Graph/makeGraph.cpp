@@ -30,6 +30,11 @@ void makeGraph::getFromFile(std::string nazwaPlikuWe, std::vector<std::vector<in
     }
 
     // Wczytanie macierzy sąsiedztwa
+    graph.clear();
+    graph.shrink_to_fit();
+    graph.resize(V, std::vector<int>(V));
+
+    // Wczytanie macierzy sąsiedztwa
     graph.resize(V, std::vector<int>(V));
     for (int i = 0; i < V; ++i) {
         for (int j = 0; j < V; ++j) {
@@ -43,7 +48,76 @@ void makeGraph::getFromFile(std::string nazwaPlikuWe, std::vector<std::vector<in
     inputFile.close();
 }
 
+void makeGraph::writeToFileTimesAndAvg(std::vector<double> times, std::vector<int> absoluteErrors,
+                                 std::vector<double> relativeErrors,
+                                 std::vector<int> solutions,
+                                 double avgTime, double absErrorAvg, double relativeErrorAvg) {
+    std::ofstream file("../Files/output.txt", std::ios::app); // otwieramy plik w trybie dopisywania
 
+    if (!file.is_open()) {
+        throw std::ios_base::failure("Nie udało się otworzyć pliku output.txt");
+    }
+
+    if (times.size() != absoluteErrors.size() || times.size() != relativeErrors.size()) {
+        throw std::invalid_argument("Rozmiary wektorów times, absoluteErrors i relativeErrors muszą być takie same.");
+    }
+
+    file << "czas[ms];droga;wzgledny;wzgledny[%];bezwzgledny" << std::endl;//3linia
+    for (size_t i = 0; i < times.size(); ++i) {
+        double relativeErrorPercent = relativeErrors[i] * 100.0;
+
+        file << std::fixed << std::setprecision(2)
+             << times[i] << ";" << solutions[i] << ";" << relativeErrors[i]
+             << ";" << relativeErrorPercent << ";" << absoluteErrors[i] << std::endl;
+    }
+
+    // Podsumowanie (ostatnia linia)
+    file << "sredniczas[ms];sredniwzgledny;sredniWzg[%];sredniBezWzg" << std::endl;
+    double avgRelativeErrorPercent = relativeErrorAvg * 100.0;
+    file << std::fixed << std::setprecision(2)
+         << avgTime << ";" << relativeErrorAvg << ";" << avgRelativeErrorPercent << ";"
+         << absErrorAvg << ";" << std::endl;
+
+    file.close();
+}
+
+void makeGraph::writeMainInfoForExcel(int V, double avgTime, double absErrorAvg, double relativeErrorAvg, std::string file_name) {
+    file_name = "../Files/" + file_name;
+    std::ofstream file(file_name, std::ios::app); // otwieramy plik w trybie dopisywania
+
+    if (!file.is_open()) {
+        throw std::ios_base::failure("Nie udało się otworzyć pliku output.txt");
+    }
+
+    // Podsumowanie (ostatnia linia)
+    // file << "sredniczas[ms];sredniwzgledny;sredniWzg[%];sredniBezWzg" << std::endl;
+    double avgRelativeErrorPercent = relativeErrorAvg * 100.0;
+    file  <<V << ";"<< std::fixed << std::setprecision(2)
+         << avgTime << ";" << relativeErrorAvg << ";" << avgRelativeErrorPercent << ";"
+         << absErrorAvg << ";" << std::endl;
+
+    file.close();
+}
+
+void makeGraph::writeAboutAnts(double evaporation, double alfa, double beta, double Q, std::string file_name) {
+    std::vector<std::string> names = {"outputCAS.txt", "outputDAS.txt", "outputQAS.txt"};
+    for(int i = 0 ; i < names.size() ; i++) {
+        file_name = "../Files/" + names[i];
+        std::ofstream file(file_name, std::ios::app);
+        if (!file) {
+            std::cerr << "Nie można otworzyć pliku: " << file_name << "\n";
+            return;
+        }
+
+        file << "Parowanie = " << evaporation << "; "
+             << "Alfa = " << alfa << "; "
+             << "Beta = " << beta << "; "
+             << "Stala = " << Q << "; "
+             << "\n";
+
+        file.close();
+    }
+}
 
 
 void makeGraph::generateGraph(std::vector<std::vector<int>>& graph, int density, bool isDirected, int V) {

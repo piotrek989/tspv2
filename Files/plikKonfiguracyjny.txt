@@ -1,12 +1,11 @@
-nazwa pliku wejsciowego:../Files/file_171a.txt
+nazwa pliku wejsciowego:../Files/file_5s.txt
 nazwa pliku wyjsciowego:..Files/output.txt
 test z pojedynczego pliku:true
 liczba powtorzen algorytmow:1
-max czas wykonywania algorytmu[ms]:100000
-ilosc iteracji bez poprawy:1000
+max czas wykonywania algorytmu[ms]:6000
+ilosc iteracji bez poprawy:200
 procent dolnego ograniczenia:0
-alpha:1.0
-beta:2.0
-stala:5.0
-liczba mrowek:171
+alpha:1
+beta:3
 wspolczynnik parowania feromonu:0.5
+stala:5
