@@ -9,7 +9,7 @@
 
 Program::Program()
     : solutionFromFile(-1),
-      ifTesting(true)
+      ifTesting(false)
 {}
 
 bool stringToBool(const std::string& str) {
