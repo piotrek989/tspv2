@@ -2,7 +2,7 @@ nazwa pliku wejsciowego:../Files/file_100s.txt
 nazwa pliku wyjsciowego:..Files/output.txt
 test z pojedynczego pliku:true
 liczba powtorzen algorytmow:1
-max czas wykonywania algorytmu[ms]:3000
+max czas wykonywania algorytmu[ms]:500
 ilosc iteracji bez poprawy:200
 procent dolnego ograniczenia:5
 alpha:1

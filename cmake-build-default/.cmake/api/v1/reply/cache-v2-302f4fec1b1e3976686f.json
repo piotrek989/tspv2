@@ -43,7 +43,7 @@
 				}
 			],
 			"type" : "STRING",
-			"value" : "Debug"
+			"value" : ""
 		},
 		{
 			"name" : "CMAKE_CACHEFILE_DIR",
@@ -55,7 +55,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "c:/Users/Piotr/CLionProjects/zad4/cmake-build-debug"
+			"value" : "c:/Users/Piotr/CLionProjects/zad4/cmake-build-default"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -190,7 +190,7 @@
 					"value" : "CXX compiler"
 				}
 			],
-			"type" : "STRING",
+			"type" : "FILEPATH",
 			"value" : "C:/Program Files/JetBrains/CLion 2024.1/bin/mingw/bin/g++.exe"
 		},
 		{
@@ -334,7 +334,7 @@
 					"value" : "C compiler"
 				}
 			],
-			"type" : "STRING",
+			"type" : "FILEPATH",
 			"value" : "C:/Program Files/JetBrains/CLion 2024.1/bin/mingw/bin/gcc.exe"
 		},
 		{
@@ -643,7 +643,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/Piotr/CLionProjects/zad4/cmake-build-debug/CMakeFiles/pkgRedirects"
+			"value" : "C:/Users/Piotr/CLionProjects/zad4/cmake-build-default/CMakeFiles/pkgRedirects"
 		},
 		{
 			"name" : "CMAKE_GENERATOR",
@@ -1363,7 +1363,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/Piotr/CLionProjects/zad4/cmake-build-debug"
+			"value" : "C:/Users/Piotr/CLionProjects/zad4/cmake-build-default"
 		},
 		{
 			"name" : "zad_4_IS_TOP_LEVEL",
